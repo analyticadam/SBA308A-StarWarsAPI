@@ -22,24 +22,44 @@ const loadStarWarsPeople = async (number) => {
   }
 };
 
+//============New Addition
+// Function to load all Characters
+const loadCharacterList = async () => {
+  const totalCharacters = 20; //To have all # character show up
+  const dropdown = starWarsPeople;
+
+  // Populate the dropdown list
+  for (let i = 1; i <= totalCharacters; i++) {
+    const swData = await loadStarWarsPeople(i); //waits for the LoadStarWars People function to do its thing
+    const option = document.createElement("option"); // creates each option on your drop down list
+    option.value = i; // Uses the id for each option (it's why we started at 1)
+    option.textContent = swData.name; // Display the character's name
+    dropdown.appendChild(option); // Actually places the information on the dropdown
+  }
+};
+
 // Event Listener for the button click
 swBtn.addEventListener("click", async () => {
   const starName = starWarsPeople.value;
 
-  // Validate input
-  if (!starName || starName < 1 || starName > 83) {
-    alert("Please enter a number between 1 and 83");
-    return;
-  }
+  // // Validate input
+  // if (!starName || starName < 1 || starName > 83) {
+  //   alert("Please enter a number between 1 and 83");
+  //   return;
+  // }
 
   // Fetch data and update UI
   const swName = await loadStarWarsPeople(starName);
   if (swName) {
     personName.textContent = swName.name;
     starPics.src = swName.img;
+    // starPics.style.display = "block";
     starLinks.href = swName.link;
   }
 });
+
+// New Additon
+loadCharacterList(); //You have to call the character list, so it shows up on your page
 
 // Starry Background Functionality
 const canvas = document.createElement("canvas"); // Create canvas dynamically

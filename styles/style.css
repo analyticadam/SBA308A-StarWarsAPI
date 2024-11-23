@@ -6,11 +6,12 @@ body {
   height: 100vh;
   background: black;
   color: yellow;
-  font-family: "Arial", sans-serif;
+  /* font-family: "Arial", sans-serif; */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Separate crawl and interaction sections */
   align-items: center;
+  font-family: "Star Wars", sans-serif;
 }
 
 /* Starry background canvas */
@@ -23,6 +24,10 @@ body {
   z-index: 0; /* Keep it behind all other elements */
   pointer-events: none;
 }
+
+/* #personName {
+  font-size: larger;
+} */
 
 /* Crawl container styling */
 .star-wars-crawl {
@@ -114,22 +119,14 @@ body {
   font-size: 16px;
   background-color: yellow;
   color: black;
-  border: 2px solid yellow;
+  border: 2px solid black;
   border-radius: 5px;
   cursor: pointer;
 }
 
 #interaction button:hover {
-  background-color: orange;
+  background-color: blue;
   color: white;
-}
-
-/* Result container styling */
-#result {
-  margin-top: 20px;
-  text-align: center;
-  max-width: 300px; /* Limit the size of the container */
-  overflow: hidden; /* Prevent the image from overflowing */
 }
 
 /* Image styling */
@@ -144,10 +141,10 @@ body {
   object-fit: contain; /* Ensure the image fits without distortion */
 }
 
-/* Text below image */
+/* Character text name above image */
 #result label {
   display: block;
-  font-size: 18px;
+  font-size: 34px;
   margin-top: 10px;
 }
 
@@ -160,5 +157,5 @@ body {
 }
 
 .starLinks:hover {
-  color: orange;
+  color: royalblue;
 }

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Star Wars Crawl</title>
     <link rel="stylesheet" href="styles/style.css" />
+    <link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet" />
     <script defer src="scripts/starwars.js"></script>
   </head>
   <body>
@@ -13,15 +14,13 @@
 
     <!-- Star Wars API Interaction -->
     <div id="interaction">
-      <input
-        id="starWarsPeople"
-        type="number"
-        placeholder="Enter a number between 1 and 83"
-      />
+      <select name="" id="starWarsPeople">
+        Choose a Character
+      </select>
       <button id="swBtn">Get Person</button>
       <div id="result">
         <label id="personName"></label>
-        <img src="" alt="Star Wars Character" id="starPics" />
+        <img src="" alt="" id="starPics" />
         <a href="" class="starLinks" target="_blank">Click for more info</a>
       </div>
     </div>
@@ -31,7 +30,7 @@
       <div class="crawl-content">
         <p class="intro">A long time ago, in a galaxy far, far away....</p>
         <h1>Episode I</h1>
-        <h2>THE RISE OF THE FULL-STACK</h2>
+        <h2>THE RISE OF THE FULL-STACK DEVELOPER</h2>
         <p>
           The galaxy of development expands, and Adam Farley has completed the
           foundational quests of HTML, CSS, JavaScript, and the DOM.
