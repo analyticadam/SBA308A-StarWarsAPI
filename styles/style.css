@@ -1,0 +1,200 @@
+/* Center content on the page */
+body {
+  display: flex; /* Enable flexbox */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full viewport height */
+  margin: 0; /* Remove default margin */
+  padding: 0;
+  overflow: hidden; /* Prevent scrolling if necessary */
+  background: black; /* Black background for space effect */
+  color: yellow;
+  font-family: "Arial", sans-serif;
+}
+
+/* Starry background canvas */
+#starCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Keep it behind other elements */
+  pointer-events: none; /* Allow clicks to pass through the canvas */
+}
+
+/* Content container styling */
+.content {
+  position: relative;
+  z-index: 1; /* Ensure content appears above the stars */
+  text-align: center;
+  color: yellow;
+  font-family: "Arial", sans-serif;
+  margin-top: 50px;
+}
+
+/* Image styling */
+#starPics {
+  width: 200px; /* Reduce the width to make the image smaller */
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* Image container styling */
+#imageContainer {
+  background-color: gray;
+  padding: 20px;
+  border: 15px solid black;
+  display: flex;
+  flex-direction: column; /* Stack content vertically */
+  align-items: center; /* Center content horizontally */
+  height: fit-content; /* Adjust height to content */
+  width: fit-content; /* Adjust width to content */
+}
+
+/* Styling for Person Name */
+#imageContainer #personName {
+  color: yellow; /* Change text color */
+  font-size: 32px; /* Adjust font size */
+  text-align: center; /* Align text to center */
+  margin-bottom: 10px; /* Add space between the label and the image */
+}
+
+/* Link states */
+a:link {
+  color: black; /* Set color for unvisited links */
+  text-decoration: underline; /* Optional: remove underline */
+}
+
+a:visited {
+  color: blue; /* Set color for visited links */
+}
+
+a:hover {
+  color: green; /* Change color when hovered */
+  text-decoration: underline; /* Optional: underline on hover */
+}
+
+a:active {
+  color: red; /* Set color for active links */
+}
+
+/* Input and button styling */
+input#starWarsPeople {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+  position: relative; /* Ensure it's above the canvas */
+  z-index: 1; /* Ensure it's above the canvas */
+}
+
+button#swBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: yellow;
+  color: black;
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative; /* Ensure it's above the canvas */
+  z-index: 1; /* Ensure it's above the canvas */
+}
+
+button#swBtn:hover {
+  background-color: orange;
+  color: white;
+}
+
+/* General layout adjustments */
+#divcardContainer,
+#FlexBoxContainer,
+#nameContainer,
+#infoContainer {
+  margin: 20px auto;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+  position: relative; /* Ensure it's above the canvas */
+  z-index: 1; /* Ensure it's above the canvas */
+}
+
+/* Optional twinkling stars overlay */
+.twinkling-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("path/to/twinkling-stars.png") repeat;
+  background-size: 200px 200px;
+  z-index: 0; /* Behind content */
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Keyframes for twinkling stars */
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Crawl container styling */
+.star-wars-crawl {
+  position: absolute;
+  bottom: -100%; /* Start off the screen */
+  width: 100%;
+  height: 100vh;
+  perspective: 400px; /* Adds the 3D effect */
+  overflow: hidden;
+  z-index: 2; /* Ensure crawl is above the canvas */
+}
+
+/* Inner content to scroll */
+.crawl-content {
+  position: absolute;
+  bottom: 0;
+  width: 60%; /* Adjust the width of the text */
+  margin: 0 auto;
+  text-align: justify;
+  font-size: 20px;
+  color: yellow;
+  transform-origin: 50% 100%; /* Perspective transformation point */
+  animation: crawl-animation 30s linear infinite; /* Smooth scrolling animation */
+}
+
+/* Intro text styling */
+.crawl-content .intro {
+  text-align: center;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+/* Styles for episode and title */
+.crawl-content h1 {
+  text-align: center;
+  font-size: 26px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.crawl-content h2 {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+/* Animation Keyframes */
+@keyframes crawl-animation {
+  0% {
+    transform: rotateX(20deg) translateZ(0) translateY(100%);
+  }
+  100% {
+    transform: rotateX(20deg) translateZ(-1000px) translateY(-200%);
+  }
+}
