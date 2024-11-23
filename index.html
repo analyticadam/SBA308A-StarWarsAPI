@@ -3,32 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Star Wars</title>
-    <!-- Link to your CSS -->
+    <title>Star Wars Crawl</title>
     <link rel="stylesheet" href="styles/style.css" />
-    <!-- Link to your JavaScript -->
     <script defer src="scripts/starwars.js"></script>
   </head>
   <body>
-    <!-- Main Content -->
-    <div id="divcardContainer"></div>
-    <div id="FlexBoxContainer"></div>
-    <div id="nameContainer"></div>
-    <div id="imageContainer">
-      <label id="personName"></label>
-      <img src="" alt="Star Wars Pictures" id="starPics" />
-      <div id="linkhrefContainer">
-        <a href="" class="starLinks">Click for more info</a>
-      </div>
-    </div>
-    <div id="infoContainer"></div>
-
-    <!-- Input and Button -->
-    <input id="starWarsPeople" type="number" placeholder="Choose a number" />
-    <button id="swBtn">Get Person</button>
-
     <!-- Starry Background -->
     <canvas id="starCanvas"></canvas>
+
+    <!-- Star Wars API Interaction -->
+    <div id="interaction">
+      <input
+        id="starWarsPeople"
+        type="number"
+        placeholder="Enter a number between 1 and 83"
+      />
+      <button id="swBtn">Get Person</button>
+      <div id="result">
+        <label id="personName"></label>
+        <img src="" alt="Star Wars Character" id="starPics" />
+        <a href="" class="starLinks" target="_blank">Click for more info</a>
+      </div>
+    </div>
 
     <!-- Star Wars Scrolling Text -->
     <div class="star-wars-crawl">

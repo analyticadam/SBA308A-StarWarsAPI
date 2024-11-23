@@ -1,15 +1,16 @@
-/* Center content on the page */
+/* General body styling */
 body {
-  display: flex; /* Enable flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  height: 100vh; /* Full viewport height */
-  margin: 0; /* Remove default margin */
+  margin: 0;
   padding: 0;
-  overflow: hidden; /* Prevent scrolling if necessary */
-  background: black; /* Black background for space effect */
+  overflow: hidden; /* Prevent scrolling */
+  height: 100vh;
+  background: black;
   color: yellow;
   font-family: "Arial", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Separate crawl and interaction sections */
+  align-items: center;
 }
 
 /* Starry background canvas */
@@ -19,172 +20,54 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Keep it behind other elements */
-  pointer-events: none; /* Allow clicks to pass through the canvas */
-}
-
-/* Content container styling */
-.content {
-  position: relative;
-  z-index: 1; /* Ensure content appears above the stars */
-  text-align: center;
-  color: yellow;
-  font-family: "Arial", sans-serif;
-  margin-top: 50px;
-}
-
-/* Image styling */
-#starPics {
-  width: 200px; /* Reduce the width to make the image smaller */
-  height: auto; /* Maintain aspect ratio */
-}
-
-/* Image container styling */
-#imageContainer {
-  background-color: gray;
-  padding: 20px;
-  border: 15px solid black;
-  display: flex;
-  flex-direction: column; /* Stack content vertically */
-  align-items: center; /* Center content horizontally */
-  height: fit-content; /* Adjust height to content */
-  width: fit-content; /* Adjust width to content */
-}
-
-/* Styling for Person Name */
-#imageContainer #personName {
-  color: yellow; /* Change text color */
-  font-size: 32px; /* Adjust font size */
-  text-align: center; /* Align text to center */
-  margin-bottom: 10px; /* Add space between the label and the image */
-}
-
-/* Link states */
-a:link {
-  color: black; /* Set color for unvisited links */
-  text-decoration: underline; /* Optional: remove underline */
-}
-
-a:visited {
-  color: blue; /* Set color for visited links */
-}
-
-a:hover {
-  color: green; /* Change color when hovered */
-  text-decoration: underline; /* Optional: underline on hover */
-}
-
-a:active {
-  color: red; /* Set color for active links */
-}
-
-/* Input and button styling */
-input#starWarsPeople {
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid black;
-  border-radius: 5px;
-  font-size: 16px;
-  position: relative; /* Ensure it's above the canvas */
-  z-index: 1; /* Ensure it's above the canvas */
-}
-
-button#swBtn {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: yellow;
-  color: black;
-  border: 2px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-  position: relative; /* Ensure it's above the canvas */
-  z-index: 1; /* Ensure it's above the canvas */
-}
-
-button#swBtn:hover {
-  background-color: orange;
-  color: white;
-}
-
-/* General layout adjustments */
-#divcardContainer,
-#FlexBoxContainer,
-#nameContainer,
-#infoContainer {
-  margin: 20px auto;
-  text-align: center;
-  color: white;
-  font-size: 18px;
-  position: relative; /* Ensure it's above the canvas */
-  z-index: 1; /* Ensure it's above the canvas */
-}
-
-/* Optional twinkling stars overlay */
-.twinkling-stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("path/to/twinkling-stars.png") repeat;
-  background-size: 200px 200px;
-  z-index: 0; /* Behind content */
-  animation: twinkle 2s ease-in-out infinite;
-}
-
-/* Keyframes for twinkling stars */
-@keyframes twinkle {
-  0%,
-  100% {
-    opacity: 0.8;
-  }
-  50% {
-    opacity: 1;
-  }
+  z-index: 0; /* Keep it behind all other elements */
+  pointer-events: none;
 }
 
 /* Crawl container styling */
 .star-wars-crawl {
   position: absolute;
-  bottom: -100%; /* Start off the screen */
+  bottom: 0; /* Start from the bottom */
   width: 100%;
   height: 100vh;
-  perspective: 400px; /* Adds the 3D effect */
+  perspective: 800px; /* Add 3D perspective */
   overflow: hidden;
-  z-index: 2; /* Ensure crawl is above the canvas */
+  z-index: 2; /* Ensure it's above the canvas */
+  display: flex;
+  justify-content: center; /* Center the text horizontally */
+  align-items: flex-end; /* Position it at the bottom to scroll upward */
 }
 
-/* Inner content to scroll */
+/* Crawl content */
 .crawl-content {
-  position: absolute;
-  bottom: 0;
-  width: 60%; /* Adjust the width of the text */
-  margin: 0 auto;
+  position: relative;
+  width: 60%; /* Set crawl width */
   text-align: justify;
-  font-size: 20px;
+  font-size: 24px; /* Increase font size for better readability */
   color: yellow;
   transform-origin: 50% 100%; /* Perspective transformation point */
-  animation: crawl-animation 30s linear infinite; /* Smooth scrolling animation */
+  animation: crawl-animation 45s linear; /* Smooth scrolling animation */
 }
 
-/* Intro text styling */
+/* Intro text */
 .crawl-content .intro {
   text-align: center;
-  font-size: 22px;
+  font-size: 28px;
   margin-bottom: 20px;
+  font-weight: bold;
 }
 
-/* Styles for episode and title */
+/* Title styling */
 .crawl-content h1 {
   text-align: center;
-  font-size: 26px;
+  font-size: 32px;
   margin: 10px 0;
   font-weight: bold;
 }
 
 .crawl-content h2 {
   text-align: center;
-  font-size: 18px;
+  font-size: 26px;
   margin: 10px 0;
   font-weight: bold;
 }
@@ -193,8 +76,89 @@ button#swBtn:hover {
 @keyframes crawl-animation {
   0% {
     transform: rotateX(20deg) translateZ(0) translateY(100%);
+    opacity: 1;
+  }
+  80% {
+    opacity: 1; /* Text fully visible for most of the animation */
   }
   100% {
-    transform: rotateX(20deg) translateZ(-1000px) translateY(-200%);
+    transform: rotateX(20deg) translateZ(-1500px) translateY(-200%);
+    opacity: 0; /* Fade out as it exits */
   }
+}
+
+/* Interaction container */
+#interaction {
+  position: relative;
+  z-index: 3; /* Keep it above the crawl */
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background for contrast */
+  border-radius: 10px;
+  text-align: center;
+  max-width: 400px; /* Restrict width to prevent overlap */
+}
+
+/* Input field styling */
+#interaction input {
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+/* Button styling */
+#interaction button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: yellow;
+  color: black;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#interaction button:hover {
+  background-color: orange;
+  color: white;
+}
+
+/* Result container styling */
+#result {
+  margin-top: 20px;
+  text-align: center;
+  max-width: 300px; /* Limit the size of the container */
+  overflow: hidden; /* Prevent the image from overflowing */
+}
+
+/* Image styling */
+#result img {
+  display: block;
+  max-width: 100%; /* Ensure image scales to fit the container */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 400px; /* Prevent the image from being too tall */
+  margin: 10px auto;
+  border: 2px solid yellow;
+  border-radius: 5px;
+  object-fit: contain; /* Ensure the image fits without distortion */
+}
+
+/* Text below image */
+#result label {
+  display: block;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* Link styling */
+.starLinks {
+  display: block;
+  margin-top: 10px;
+  color: yellow;
+  text-decoration: underline;
+}
+
+.starLinks:hover {
+  color: orange;
 }
