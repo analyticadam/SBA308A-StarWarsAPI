@@ -25,9 +25,27 @@ body {
   pointer-events: none;
 }
 
-/* #personName {
-  font-size: larger;
-} */
+#starWarsPeople {
+  width: 300px; /* Increases the width of the dropdown */
+  height: 50px; /* Increases the height of the dropdown */
+  font-size: 18px; /* Makes the text larger */
+  padding: 10px; /* Adds space inside the dropdown for better readability */
+  background-color: #ffffff; /* Keeps the background light for visibility */
+  color: #333; /* Ensures the text is dark for contrast */
+  border: 2px solid #ccc; /* Slightly thicker border for emphasis */
+  border-radius: 5px; /* Smooth corners for a modern look */
+}
+
+#starWarsPeople:focus {
+  border-color: #007bff; /* Highlight border on focus */
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Subtle glow effect */
+}
+
+#starWarsPeople option {
+  font-size: 18px; /* Makes dropdown options' text larger */
+  padding: 5px; /* Adds space for better readability in the dropdown options */
+}
 
 /* Crawl container styling */
 .star-wars-crawl {
