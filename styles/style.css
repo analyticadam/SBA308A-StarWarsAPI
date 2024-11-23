@@ -46,7 +46,7 @@ body {
   font-size: 24px; /* Increase font size for better readability */
   color: yellow;
   transform-origin: 50% 100%; /* Perspective transformation point */
-  animation: crawl-animation 45s linear; /* Smooth scrolling animation */
+  animation: crawl-animation 120s linear; /* Smooth scrolling animation */
 }
 
 /* Intro text */
