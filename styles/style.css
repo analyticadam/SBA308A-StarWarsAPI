@@ -4,13 +4,12 @@ body {
   padding: 0;
   overflow: hidden; /* Prevent scrolling */
   height: 100vh;
-  background: black;
-  color: yellow;
-  /* font-family: "Arial", sans-serif; */
+  background: black; /* Starry space background */
+  color: yellow; /* Text color for Star Wars theme */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Separate crawl and interaction sections */
-  align-items: center;
+  justify-content: flex-start; /* Push content to the top */
+  align-items: center; /* Center-align horizontally */
   font-family: "Star Wars", sans-serif;
 }
 
@@ -21,159 +20,112 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Keep it behind all other elements */
-  pointer-events: none;
+  z-index: 0; /* Behind all other elements */
+  pointer-events: none; /* Non-interactive */
 }
 
+/* Dropdown styling */
 #starWarsPeople {
-  width: 300px; /* Increases the width of the dropdown */
-  height: 50px; /* Increases the height of the dropdown */
-  font-size: 18px; /* Makes the text larger */
-  padding: 10px; /* Adds space inside the dropdown for better readability */
-  background-color: #ffffff; /* Keeps the background light for visibility */
-  color: #333; /* Ensures the text is dark for contrast */
-  border: 2px solid #ccc; /* Slightly thicker border for emphasis */
-  border-radius: 5px; /* Smooth corners for a modern look */
+  width: 300px;
+  height: 50px;
+  font-size: 18px;
+  padding: 10px;
+  background-color: #000000; /* Black dropdown background */
+  color: yellow; /* Yellow text for theme */
+  border: 2px solid yellow; /* Border matching the theme */
+  border-radius: 5px; /* Rounded corners */
+  position: relative;
+  z-index: 10; /* Ensure dropdown is above other elements */
+  pointer-events: auto; /* Enable mouse interaction */
+  cursor: pointer; /* Show a pointer cursor on hover */
 }
 
 #starWarsPeople:focus {
-  border-color: #007bff; /* Highlight border on focus */
+  border-color: orange; /* Change border color on focus */
   outline: none;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.6); /* Subtle glow effect */
+  box-shadow: 0 0 8px rgba(255, 165, 0, 0.6); /* Orange glow */
 }
 
-#starWarsPeople option {
-  font-size: 18px; /* Makes dropdown options' text larger */
-  padding: 5px; /* Adds space for better readability in the dropdown options */
+/* Button styling */
+#swBtn {
+  margin-left: 10px; /* Add spacing next to dropdown */
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: yellow; /* Match theme color */
+  color: black; /* Text contrast */
+  border: 2px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10; /* Ensure it's above other elements */
+  position: relative; /* Ensure it respects stacking context */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
 }
 
-/* Crawl container styling */
+#swBtn:hover {
+  background-color: orange; /* Hover effect */
+}
+
+/* Result container layout */
+#result-container {
+  display: flex;
+  flex-direction: row; /* Align image and details horizontally */
+  justify-content: center;
+  align-items: flex-start; /* Align content to the top */
+  gap: 20px; /* Space between image and details */
+  margin-top: 40px; /* Push results container below dropdown */
+  z-index: 10; /* Ensure it's above the crawl */
+  background-color: rgba(0, 0, 0, 0.9); /* Add slight background for contrast */
+  padding: 10px; /* Add spacing inside container */
+  border-radius: 10px; /* Rounded edges for styling */
+}
+
+/* Character image styling */
+#starPics {
+  border: 2px solid yellow; /* Match theme */
+  border-radius: 10px; /* Rounded edges */
+  max-height: 300px; /* Limit image size */
+  object-fit: cover; /* Maintain aspect ratio */
+}
+
+/* Extra details styling */
+#extraDetails {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8); /* Slightly transparent black */
+  border: 2px solid yellow; /* Yellow border */
+  border-radius: 10px; /* Rounded corners */
+  color: yellow; /* Text color */
+  text-align: left; /* Align details to the left */
+  width: 300px; /* Fixed width for consistent layout */
+  line-height: 1.5; /* Improve readability */
+}
+
+/* Crawl text styling */
 .star-wars-crawl {
   position: absolute;
-  bottom: 0; /* Start from the bottom */
+  bottom: 0; /* Keep crawl at the bottom */
   width: 100%;
-  height: 100vh;
-  perspective: 800px; /* Add 3D perspective */
-  overflow: hidden;
-  z-index: 2; /* Ensure it's above the canvas */
-  display: flex;
-  justify-content: center; /* Center the text horizontally */
-  align-items: flex-end; /* Position it at the bottom to scroll upward */
+  height: auto;
+  perspective: 800px; /* Add 3D effect */
+  overflow: hidden; /* Hide content outside the view */
+  z-index: 1; /* Keep crawl below other content */
 }
 
-/* Crawl content */
 .crawl-content {
-  position: relative;
-  width: 60%; /* Set crawl width */
-  text-align: justify;
-  font-size: 24px; /* Increase font size for better readability */
-  color: yellow;
-  transform-origin: 50% 100%; /* Perspective transformation point */
-  animation: crawl-animation 120s linear; /* Smooth scrolling animation */
+  text-align: justify; /* Justify text for readability */
+  font-size: 18px; /* Slightly smaller crawl font */
+  color: yellow; /* Yellow text for theme */
+  transform-origin: 50% 100%; /* Center the 3D effect */
+  animation: crawl-animation 120s linear infinite; /* Smooth scrolling animation */
 }
 
-/* Intro text */
-.crawl-content .intro {
-  text-align: center;
-  font-size: 28px;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-/* Title styling */
-.crawl-content h1 {
-  text-align: center;
-  font-size: 32px;
-  margin: 10px 0;
-  font-weight: bold;
-}
-
-.crawl-content h2 {
-  text-align: center;
-  font-size: 26px;
-  margin: 10px 0;
-  font-weight: bold;
-}
-
-/* Animation Keyframes */
+/* Keyframe animation for Star Wars crawl */
 @keyframes crawl-animation {
   0% {
     transform: rotateX(20deg) translateZ(0) translateY(100%);
     opacity: 1;
   }
-  80% {
-    opacity: 1; /* Text fully visible for most of the animation */
-  }
   100% {
     transform: rotateX(20deg) translateZ(-1500px) translateY(-200%);
-    opacity: 0; /* Fade out as it exits */
+    opacity: 0;
   }
-}
-
-/* Interaction container */
-#interaction {
-  position: relative;
-  z-index: 3; /* Keep it above the crawl */
-  margin-top: 20px;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.8); /* Semi-transparent background for contrast */
-  border-radius: 10px;
-  text-align: center;
-  max-width: 400px; /* Restrict width to prevent overlap */
-}
-
-/* Input field styling */
-#interaction input {
-  padding: 10px;
-  font-size: 16px;
-  border: 2px solid yellow;
-  border-radius: 5px;
-  margin-right: 10px;
-}
-
-/* Button styling */
-#interaction button {
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: yellow;
-  color: black;
-  border: 2px solid black;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-#interaction button:hover {
-  background-color: blue;
-  color: white;
-}
-
-/* Image styling */
-#result img {
-  display: block;
-  max-width: 100%; /* Ensure image scales to fit the container */
-  height: auto; /* Maintain aspect ratio */
-  max-height: 400px; /* Prevent the image from being too tall */
-  margin: 10px auto;
-  border: 2px solid yellow;
-  border-radius: 5px;
-  object-fit: contain; /* Ensure the image fits without distortion */
-}
-
-/* Character text name above image */
-#result label {
-  display: block;
-  font-size: 34px;
-  margin-top: 10px;
-}
-
-/* Link styling */
-.starLinks {
-  display: block;
-  margin-top: 10px;
-  color: yellow;
-  text-decoration: underline;
-}
-
-.starLinks:hover {
-  color: royalblue;
 }

@@ -4,28 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Star Wars Crawl</title>
+    <!-- Link to CSS -->
     <link rel="stylesheet" href="styles/style.css" />
+    <!-- Star Wars Font -->
     <link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet" />
+    <!-- Link to JavaScript -->
     <script defer src="scripts/starwars.js"></script>
   </head>
   <body>
     <!-- Starry Background -->
     <canvas id="starCanvas"></canvas>
 
-    <!-- Star Wars API Interaction -->
+    <!-- Interaction Section -->
     <div id="interaction">
-      <select name="" id="starWarsPeople">
+      <select id="starWarsPeople">
         <option value="" disabled selected>Choose a Character</option>
       </select>
-      <button id="swBtn">Get Person</button>
-      <div id="result">
-        <label id="personName"></label>
-        <img src="" alt="" id="starPics" />
-        <a href="" class="starLinks" target="_blank">Click for more info</a>
+      <button id="swBtn">Get Character</button>
+    </div>
+
+    <!-- Result Section -->
+    <div id="result-container">
+      <!-- Character Image -->
+      <img src="" alt="Character Image" id="starPics" />
+      <!-- Character Extra Details -->
+      <div id="extraDetails">
+        <p><strong>Birth Year:</strong> <span id="birthYear">N/A</span></p>
+        <p><strong>Eye Color:</strong> <span id="eyeColor">N/A</span></p>
+        <p><strong>Hair Color:</strong> <span id="hairColor">N/A</span></p>
+        <p><strong>Homeworld:</strong> <span id="homeworld">N/A</span></p>
+        <p><strong>Species:</strong> <span id="species">N/A</span></p>
+        <p><strong>Starships:</strong> <span id="starships">N/A</span></p>
+        <p><strong>Vehicles:</strong> <span id="vehicles">N/A</span></p>
+        <p><strong>Films:</strong> <span id="films">N/A</span></p>
       </div>
     </div>
 
-    <!-- Star Wars Scrolling Text -->
+    <!-- Scrolling Text Section -->
     <div class="star-wars-crawl">
       <div class="crawl-content">
         <p class="intro">A long time ago, in a galaxy far, far away....</p>
