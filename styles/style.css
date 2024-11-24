@@ -20,8 +20,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0; /* Behind all other elements */
-  pointer-events: none; /* Non-interactive */
+  z-index: 0; /* Keep it behind all other elements */
+  pointer-events: none; /* Allow interactions with elements above */
+  background-color: black; /* Ensure background matches space theme */
 }
 
 /* Dropdown styling */
@@ -62,7 +63,7 @@ body {
 }
 
 #swBtn:hover {
-  background-color: orange; /* Hover effect */
+  background-color: royalblue; /* Hover effect */
 }
 
 /* Result container layout */
