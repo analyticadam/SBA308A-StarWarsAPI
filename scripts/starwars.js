@@ -1,67 +1,96 @@
-// Element References
+// ======= Element References =======
 const starWarsPeople = document.getElementById("starWarsPeople");
 const swBtn = document.getElementById("swBtn");
 const personName = document.getElementById("personName");
 const starPics = document.getElementById("starPics");
 const starLinks = document.querySelector(".starLinks");
 
-// Function to pull data from the Star Wars API
-const loadStarWarsPeople = async (number) => {
+// ======= Function to Fetch a Single Character =======
+/**
+ * Fetches character details from the SWAPI and combines with Visual Guide images.
+ * @param {number} id - The ID of the Star Wars character.
+ * @returns {object|null} - Returns an object with the character's name, image, and link, or null on error.
+ */
+const loadStarWarsPeople = async (id) => {
   try {
-    const res = await fetch(
-      `https://akabab.github.io/starwars-api/api/id/${number}.json`
-    );
+    const res = await fetch(`https://swapi.dev/api/people/${id}/`);
     if (!res.ok) {
-      throw new Error(`HTTP ERROR! Status: ${res.status} (${res.statusText})`);
+      throw new Error(`HTTP error! Status: ${res.status} (${res.statusText})`);
     }
+
     const data = await res.json();
-    return { name: data.name, img: data.image, link: data.wiki };
+
+    // Combine data with Visual Guide image URL
+    const imageUrl = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+
+    return {
+      name: data.name, // Character's name
+      image: imageUrl, // URL for the character's image
+      link: `https://swapi.dev/api/people/${id}/`, // Link to SWAPI details
+    };
   } catch (err) {
     console.error("Error fetching Star Wars data:", err);
     alert("Unable to fetch data. Please try again.");
+    return null; // Return null to indicate failure
   }
 };
 
-//============New Addition
-// Function to load all Characters
-const loadCharacterList = async () => {
-  const totalCharacters = 20; //To have all # character show up
-  const dropdown = starWarsPeople;
+// ======= Function to Populate Dropdown Menu =======
+/**
+ * Populates the dropdown menu with Star Wars characters from SWAPI.
+ */
+const populateCharacterDropdown = async () => {
+  try {
+    const res = await fetch("https://swapi.dev/api/people/");
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
 
-  // Populate the dropdown list
-  for (let i = 1; i <= totalCharacters; i++) {
-    const swData = await loadStarWarsPeople(i); //waits for the LoadStarWars People function to do its thing
-    const option = document.createElement("option"); // creates each option on your drop down list
-    option.value = i; // Uses the id for each option (it's why we started at 1)
-    option.textContent = swData.name; // Display the character's name
-    dropdown.appendChild(option); // Actually places the information on the dropdown
+    const data = await res.json();
+
+    // Loop through the character list and add each as an option to the dropdown
+    data.results.forEach((character, index) => {
+      const option = document.createElement("option"); // Create a new <option> element
+      option.value = index + 1; // Use 1-based IDs for compatibility with Visual Guide
+      option.textContent = character.name; // Set the visible name in the dropdown
+      starWarsPeople.appendChild(option); // Append the option to the dropdown
+    });
+  } catch (error) {
+    console.error("Error populating dropdown:", error);
   }
 };
 
-// Event Listener for the button click
+// ======= Event Listener for Button Click =======
+/**
+ * Handles the button click event to display the selected character's details.
+ */
 swBtn.addEventListener("click", async () => {
-  const starName = starWarsPeople.value;
+  const selectedId = starWarsPeople.value; // Get the selected character ID from the dropdown
 
-  // // Validate input
-  // if (!starName || starName < 1 || starName > 83) {
-  //   alert("Please enter a number between 1 and 83");
-  //   return;
-  // }
+  // Validate the selection
+  if (!selectedId) {
+    alert("Please select a character!");
+    return;
+  }
 
-  // Fetch data and update UI
-  const swName = await loadStarWarsPeople(starName);
-  if (swName) {
-    personName.textContent = swName.name;
-    starPics.src = swName.img;
-    // starPics.style.display = "block";
-    starLinks.href = swName.link;
+  // Fetch the selected character's details
+  const character = await loadStarWarsPeople(selectedId);
+  if (character) {
+    // Update the UI with the character's details
+    personName.textContent = character.name; // Set the character's name
+    starPics.src = character.image; // Set the character's image
+    starLinks.href = character.link; // Set the link to more details
+    starLinks.textContent = "Learn More"; // Add link text
   }
 });
 
-// New Additon
-loadCharacterList(); //You have to call the character list, so it shows up on your page
+// ======= Initialize Dropdown on Page Load =======
+/**
+ * Fetches and populates the dropdown with character names when the page loads.
+ */
+populateCharacterDropdown();
 
-// Starry Background Functionality
+// ======= Starry Background Animation =======
 const canvas = document.createElement("canvas"); // Create canvas dynamically
 canvas.id = "starCanvas"; // Assign ID for styling consistency
 document.body.appendChild(canvas); // Append canvas to the body
