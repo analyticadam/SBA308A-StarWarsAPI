@@ -58,21 +58,60 @@ const loadStarWarsCharacter = async (id) => {
     vehicles.textContent = "Loading...";
     films.textContent = "Loading...";
 
+    // Fetch character data
     const res = await fetch(`https://swapi.dev/api/people/${id}/`);
     if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
     const data = await res.json();
     console.log("Character data successfully fetched:", data);
 
-    // Update UI
-    starPics.src = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
+    // Fetch additional details
+    const homeworldRes = await fetch(data.homeworld);
+    const homeworldData = await homeworldRes.json();
+    console.log("Homeworld fetched:", homeworldData.name);
+
+    const speciesList = [];
+    for (const speciesUrl of data.species) {
+      const speciesRes = await fetch(speciesUrl);
+      const speciesData = await speciesRes.json();
+      speciesList.push(speciesData.name);
+    }
+    console.log("Species fetched:", speciesList);
+
+    const filmsList = [];
+    for (const filmUrl of data.films) {
+      const filmRes = await fetch(filmUrl);
+      const filmData = await filmRes.json();
+      filmsList.push(filmData.title);
+    }
+    console.log("Films fetched:", filmsList);
+
+    const starshipsList = [];
+    for (const starshipUrl of data.starships) {
+      const starshipRes = await fetch(starshipUrl);
+      const starshipData = await starshipRes.json();
+      starshipsList.push(starshipData.name);
+    }
+    console.log("Starships fetched:", starshipsList);
+
+    const vehiclesList = [];
+    for (const vehicleUrl of data.vehicles) {
+      const vehicleRes = await fetch(vehicleUrl);
+      const vehicleData = await vehicleRes.json();
+      vehiclesList.push(vehicleData.name);
+    }
+    console.log("Vehicles fetched:", vehiclesList);
+
+    // Update the UI with fetched data
+    starPics.src = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`; // Character image
     birthYear.textContent = data.birth_year || "Unknown";
     eyeColor.textContent = data.eye_color || "Unknown";
     hairColor.textContent = data.hair_color || "Unknown";
-    homeworld.textContent = "Fetching...";
-    species.textContent = "Fetching...";
-    starships.textContent = "Fetching...";
-    vehicles.textContent = "Fetching...";
-    films.textContent = "Fetching...";
+    homeworld.textContent = homeworldData.name || "Unknown";
+    species.textContent = speciesList.join(", ") || "None";
+    starships.textContent = starshipsList.join(", ") || "None";
+    vehicles.textContent = vehiclesList.join(", ") || "None";
+    films.textContent = filmsList.join(", ") || "None";
+
     console.log("UI updated with character details.");
   } catch (error) {
     console.error("Error loading character details:", error);

@@ -112,7 +112,7 @@ body {
 
 .crawl-content {
   text-align: justify; /* Justify text for readability */
-  font-size: 18px; /* Slightly smaller crawl font */
+  font-size: 22px; /* Slightly smaller crawl font */
   color: yellow; /* Yellow text for theme */
   transform-origin: 50% 100%; /* Center the 3D effect */
   animation: crawl-animation 120s linear infinite; /* Smooth scrolling animation */
