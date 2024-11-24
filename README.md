@@ -1,8 +1,3 @@
-Certainly! Below is the complete README.md file, combining everything into a single formatted document:
-
-markdown
-Copy code
-
 # 🌌 Star Wars Character Viewer
 
 Explore your favorite **Star Wars** characters with this interactive application! ✨ This project uses the [Star Wars API (SWAPI)](https://swapi.dev/) to fetch data about characters, including their **homeworld**, **species**, **starships**, **vehicles**, and appearances in **films**. 🌟
