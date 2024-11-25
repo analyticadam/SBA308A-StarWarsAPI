@@ -93,7 +93,3 @@ This project is licensed under the MIT License.
 🙌 Acknowledgments
 SWAPI: The Star Wars API for providing data.
 Font Awesome: For the icons used in the project.
-
-🛡️ Badges
-
-🚀
