@@ -12,17 +12,17 @@ const cache = new Map();
  * @returns {Promise<Object>} - The fetched character data.
  */
 export const fetchCharacters = async () => {
-  const url = "https://swapi.dev/api/people/";
-  if (cache.has(url)) {
-    console.log("Using cached character data.");
-    return cache.get(url); // Return cached data
-  }
-  console.log("Fetching character data from API...");
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-  const data = await res.json();
-  cache.set(url, data); // Cache the fetched result
-  return data;
+	const url = "https://swapi.py4e.com/api/people"; // New API URL
+	if (cache.has(url)) {
+		console.log("Using cached character data.");
+		return cache.get(url);
+	}
+	console.log("Fetching character data from API...");
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+	const data = await res.json();
+	cache.set(url, data); // Cache the fetched result
+	return data;
 };
 
 /**
@@ -32,17 +32,17 @@ export const fetchCharacters = async () => {
  * @returns {Promise<Object>} - The fetched character details.
  */
 export const fetchCharacterDetails = async (id) => {
-  const url = `https://swapi.dev/api/people/${id}/`;
-  if (cache.has(url)) {
-    console.log(`Using cached details for character ID: ${id}`);
-    return cache.get(url); // Return cached data
-  }
-  console.log(`Fetching details for character ID: ${id}`);
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-  const data = await res.json();
-  cache.set(url, data); // Cache the fetched result
-  return data;
+	const url = `https://swapi.py4e.com/api/people/${id}/`;
+	if (cache.has(url)) {
+		console.log(`Using cached details for character ID: ${id}`);
+		return cache.get(url);
+	}
+	console.log(`Fetching details for character ID: ${id}`);
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+	const data = await res.json();
+	cache.set(url, data); // Cache the fetched result
+	return data;
 };
 
 /**
@@ -52,16 +52,16 @@ export const fetchCharacterDetails = async (id) => {
  * @returns {Promise<Object>} - The fetched resource.
  */
 export const fetchHomeworld = async (url) => {
-  if (cache.has(url)) {
-    console.log(`Using cached homeworld data for URL: ${url}`);
-    return cache.get(url); // Return cached data
-  }
-  console.log(`Fetching homeworld data from URL: ${url}`);
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-  const data = await res.json();
-  cache.set(url, data); // Cache the fetched result
-  return data;
+	if (cache.has(url)) {
+		console.log(`Using cached homeworld data for URL: ${url}`);
+		return cache.get(url); // Return cached data
+	}
+	console.log(`Fetching homeworld data from URL: ${url}`);
+	const res = await fetch(url);
+	if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+	const data = await res.json();
+	cache.set(url, data); // Cache the fetched result
+	return data;
 };
 
 /**
@@ -71,24 +71,24 @@ export const fetchHomeworld = async (url) => {
  * @returns {Promise<string[]>} - List of names or titles for the resources.
  */
 export const fetchDetailsList = async (urls) => {
-  const fetchPromises = urls.map(async (url) => {
-    if (cache.has(url)) {
-      console.log(`Using cached data for URL: ${url}`);
-      return cache.get(url); // Return cached data
-    }
-    try {
-      console.log(`Fetching data from URL: ${url}`);
-      const res = await fetch(url);
-      if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
-      const data = await res.json();
-      const nameOrTitle = data.name || data.title; // Use 'name' or 'title' field
-      cache.set(url, nameOrTitle); // Cache the result
-      return nameOrTitle;
-    } catch (error) {
-      console.error(`Error fetching data for URL: ${url}`, error);
-      return "Unavailable"; // Fallback in case of error
-    }
-  });
+	const fetchPromises = urls.map(async (url) => {
+		if (cache.has(url)) {
+			console.log(`Using cached data for URL: ${url}`);
+			return cache.get(url); // Return cached data
+		}
+		try {
+			console.log(`Fetching data from URL: ${url}`);
+			const res = await fetch(url);
+			if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+			const data = await res.json();
+			const nameOrTitle = data.name || data.title; // Use 'name' or 'title' field
+			cache.set(url, nameOrTitle); // Cache the result
+			return nameOrTitle;
+		} catch (error) {
+			console.error(`Error fetching data for URL: ${url}`, error);
+			return "Unavailable"; // Fallback in case of error
+		}
+	});
 
-  return Promise.all(fetchPromises); // Wait for all fetches to complete
+	return Promise.all(fetchPromises); // Wait for all fetches to complete
 };

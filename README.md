@@ -1,6 +1,6 @@
 # 🌌 Star Wars Character Viewer
 
-Explore your favorite **Star Wars** characters with this interactive application! ✨ This project uses the [Star Wars API (SWAPI)](https://swapi.dev/) to fetch data about characters, including their **homeworld**, **species**, **starships**, **vehicles**, and appearances in **films**. 🌟
+Explore your favorite **Star Wars** characters with this interactive application! ✨ This project uses the [Star Wars API (SWAPI)](https://swapi.py4e.com/) to fetch data about characters, including their **homeworld**, **species**, **starships**, **vehicles**, and appearances in **films**. 🌟
 
 ---
 
@@ -25,7 +25,19 @@ Explore your favorite **Star Wars** characters with this interactive application
 
 ## 📂 Project Structure
 
-📦 Project Root ├── 📁 scripts │ ├── apiCalls.js # API interaction logic │ ├── domElements.js # DOM element references and UI updates │ ├── eventHandlers.js # Event listeners and app interactions │ ├── starwars.js # Main entry point │ ├── starCanvas.js # Starry background animation ├── 📁 styles │ └── style.css # Main styles ├── index.html # Main HTML file └── README.md # Project documentation
+```
+📦 Project Root
+├── 📁 scripts
+│   ├── apiCalls.js       # API interaction logic
+│   ├── domElements.js    # DOM element references and UI updates
+│   ├── eventHandlers.js  # Event listeners and app interactions
+│   ├── starwars.js       # Main entry point
+│   ├── starCanvas.js     # Starry background animation
+├── 📁 styles
+│   └── style.css         # Main styles
+├── index.html            # Main HTML file
+└── README.md             # Project documentation
+```
 
 ---
 
@@ -50,46 +62,76 @@ Explore your favorite **Star Wars** characters with this interactive application
    git clone https://github.com/analyticadam/star-wars-character-viewer.git
    ```
 2. Navigate to the project directory:
+   ```bash
    cd star-wars-character-viewer
-3. Open index.html in your browser.
+   ```
+3. Open `index.html` in your browser using a local server like [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
 
-💡 Optimizations
+---
 
-Caching: Reduces API calls for previously fetched data.
-Parallel Fetching: Enhances performance by fetching multiple resources simultaneously.
+## 💡 Optimizations
 
-🎨 Starry Background
-Enjoy a dynamic starry canvas animation implemented using the <canvas> element and JavaScript. ✨
+- **Caching**: Reduces API calls for previously fetched data.
+- **Parallel Fetching**: Enhances performance by fetching multiple resources simultaneously.
 
-📸 Screenshots
-🔻 Dropdown & Details
+---
 
-🌌 Starry Background
+## 🎨 Starry Background
 
-📊 Performance Improvements
-Before Optimization
+Enjoy a dynamic starry canvas animation implemented using the `<canvas>` element and JavaScript. ✨
 
-🌐 Multiple redundant API calls.
-🕒 Slower data fetching due to sequential requests.
-After Optimization
-✅ Caching for repeated requests.
-✅ Parallel Fetching for faster data loading.
+---
 
-🤝 Contributing
+## 📸 Screenshots
+
+### 🔻 Dropdown & Details
+
+### 🌌 Starry Background
+
+---
+
+## 📊 Performance Improvements
+
+**Before Optimization:**
+
+- 🌐 Multiple redundant API calls.
+- 🕒 Slower data fetching due to sequential requests.
+
+**After Optimization:**
+
+- ✅ Caching for repeated requests.
+- ✅ Parallel Fetching for faster data loading.
+
+---
+
+## 🤝 Contributing
+
 Contributions are welcome! Please follow these steps:
 
 1. Fork the repository.
 2. Create a new branch:
+   ```bash
    git checkout -b feature-name
+   ```
 3. Commit your changes:
+   ```bash
    git commit -m "Add feature name"
+   ```
 4. Push to your fork:
+   ```bash
    git push origin feature-name
+   ```
 5. Open a Pull Request.
 
-📜 License
-This project is licensed under the MIT License.
+---
 
-🙌 Acknowledgments
-SWAPI: The Star Wars API for providing data.
-Font Awesome: For the icons used in the project.
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## 🙌 Acknowledgments
+
+- **SWAPI**: The Star Wars API for providing data.
+- **Font Awesome**: For the icons used in the project.
